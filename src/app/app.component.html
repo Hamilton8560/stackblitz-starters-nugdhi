@@ -1,0 +1,62 @@
+<mat-toolbar color="primary">
+  <span>Angular Developer Test</span>
+</mat-toolbar>
+<div class="flex text-xl mt-6">
+  <p class="mx-4 ml-16 mb-16">
+    Widgets: <strong>{{ display.length }}</strong>
+  </p>
+  <p>
+    Total Price : <strong>{{ sum }}</strong>
+  </p>
+</div>
+<div class="text-center my-4">
+  <div class="flex flex-wrap justify-center gap-x-6">
+    <mat-card
+      class="w-96 p-4 flex flex-row mb-6 shadow-md"
+      *ngFor="let widget of display"
+    >
+      <mat-card-header
+        class="font-bold mb-2"
+        [ngStyle]="{ color: widget.color }"
+        >{{ widget.name }}
+      </mat-card-header>
+      <mat-card-content>
+        <form class="example-form">
+          <mat-form-field class="w-full">
+            <mat-label>Name</mat-label>
+            <input matInput value="{{ widget.name }}" readonly />
+          </mat-form-field>
+          <mat-form-field class="w-full">
+            <mat-label>Color</mat-label>
+            <input
+              [ngStyle]="{ color: widget.color }"
+              matInput
+              value="{{ widget.color }}"
+              readonly
+            />
+          </mat-form-field>
+          <mat-form-field class="w-full">
+            <mat-label>Color</mat-label>
+            <input matInput value="{{ widget.price }}" readonly />
+          </mat-form-field>
+
+          <mat-form-field class="w-full">
+            <mat-label>Id</mat-label>
+            <input matInput value="{{ widget.id }}" readonly />
+          </mat-form-field>
+          <div class="mr-80 -mb-5">
+            <button
+              (click)="onDelete(widget.id)"
+              class="justify-start"
+              mat-raised-button
+              color="primary"
+            >
+              DELETE
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<router-outlet></router-outlet>
